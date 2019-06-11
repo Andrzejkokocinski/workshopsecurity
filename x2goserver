@@ -1,4 +1,8 @@
-
+sudo passwd root
+su root
+sudo apt-get update
+sudo dpkg --configure -a
+sudo apt-get dist-upgrade
 apt update
 apt -y upgrade
 apt-get -y install x2goserver x2goserver-xsession
