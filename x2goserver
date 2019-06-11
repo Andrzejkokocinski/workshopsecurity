@@ -1,0 +1,5 @@
+
+apt update
+apt -y upgrade
+apt-get -y install x2goserver x2goserver-xsession
+apt -y install xfce4
