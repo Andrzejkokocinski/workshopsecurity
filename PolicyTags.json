@@ -1,24 +1,53 @@
+{
+"mode": "Indexed",
 "parameters": {
       "tagNameProjectName": {
         "type": "String",
         "metadata": {
           "displayName": "ProjectName",
           "description": "ProjectName"
-        }
+        },
+		"defaultValue": "ProjectName"
       },
       "tagNameOwner": {
         "type": "String",
         "metadata": {
           "displayName": "Owner",
           "description": "Owner"
-        }
+        },
+		"defaultValue": "Owner"
       },
       "tagNameEnvType": {
         "type": "String",
         "metadata": {
           "displayName": "EnvType",
           "description": "EnvType"
-        }
+        },
+		"defaultValue": "EnvType"
+     },
+		"tagNameProjectValue": {
+        "type": "String",
+        "metadata": {
+          "displayName": "ProjectNameValue",
+          "description": "ProjectNameValue"
+        },
+		"defaultValue": "ProjectNameValue"
+      },
+     "tagNameOwnerValue": {
+        "type": "String",
+        "metadata": {
+          "displayName": "OwnerValue",
+          "description": "OwnerValue"
+        },
+		"defaultValue": "OwnerValue"
+      },
+      "tagNameEnvTypeValue": {
+        "type": "String",
+        "metadata": {
+          "displayName": "EnvTypeValue",
+          "description": "EnvTypeValue"
+        },
+		"defaultValue": "EnvTypeValue"
       }
     },
     "policyRule": {
@@ -29,7 +58,7 @@
             "exists": "false"
           },
           {
-            "value": "[resourceGroup().tags[parameters('tagNameProjectName')]]",
+            "value": "[resourceGroup().tags[parameters('tagNameProjectValue')]]",
             "notEquals": ""
           },
           {
@@ -37,7 +66,7 @@
             "exists": "false"
           },
           {
-            "value": "[resourceGroup().tags[parameters('tagNameOwner')]]",
+            "value": "[resourceGroup().tags[parameters('tagNameOwnerValue')]]",
             "notEquals": ""
           },
           {
@@ -45,7 +74,7 @@
             "exists": "false"
           },
           {
-            "value": "[resourceGroup().tags[parameters('tagNameEnvType')]]",
+            "value": "[resourceGroup().tags[parameters('tagNameEnvTypeValue')]]",
             "notEquals": ""
           }
         ]
@@ -55,16 +84,17 @@
         "details": [
           {
             "field": "[concat('tags[', parameters('tagNameProjectName'), ']')]",
-            "value": "[resourceGroup().tags[parameters('tagNameProjectName')]]"
+            "value": "[resourceGroup().tags[parameters('tagNameProjectValue')]]"
           },
           {
             "field": "[concat('tags[', parameters('tagNameOwner'), ']')]",
-            "value": "[resourceGroup().tags[parameters('tagNameOwner')]]"
+            "value": "[resourceGroup().tags[parameters('tagNameOwnerValue')]]"
           },
           {
             "field": "[concat('tags[', parameters('tagNameEnvType'), ']')]",
-            "value": "[resourceGroup().tags[parameters('tagNameEnvType')]]"
+            "value": "[resourceGroup().tags[parameters('tagNameEnvTypeValue')]]"
           }
         ]
       }
     }
+}
