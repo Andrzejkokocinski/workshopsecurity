@@ -1,0 +1,112 @@
+{
+"mode": "Indexed",
+"parameters": {
+      "tagNameProjectName": {
+        "type": "String",
+        "metadata": {
+          "displayName": "ProjectName",
+          "description": "ProjectName"
+        },
+		"defaultValue": "ProjectName"
+      },
+      "tagNameOwner": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Owner",
+          "description": "Owner"
+        },
+		"defaultValue": "Owner"
+      },
+      "tagNameEnvType": {
+        "type": "String",
+        "metadata": {
+          "displayName": "EnvType",
+          "description": "EnvType"
+        },
+		"defaultValue": "EnvType"
+     },
+		"tagNameProjectValue": {
+        "type": "String",
+        "metadata": {
+          "displayName": "ProjectNameValue",
+          "description": "ProjectNameValue"
+        },
+		"defaultValue": "ProjectNameValue"
+      },
+     "tagNameOwnerValue": {
+        "type": "String",
+        "metadata": {
+          "displayName": "OwnerValue",
+          "description": "OwnerValue"
+        },
+		"defaultValue": "OwnerValue"
+      },
+      "tagNameEnvTypeValue": {
+        "type": "String",
+        "metadata": {
+          "displayName": "EnvTypeValue",
+          "description": "EnvTypeValue"
+        },
+		"defaultValue": "EnvTypeValue"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+          },
+		  {
+            "field": "[concat('tags[', parameters('tagNameProjectName'), ']')]",
+            "exists": "false"
+          },
+          {
+            "value": "[parameters('tagNameProjectValue')]",
+            "notEquals": ""
+          },
+          {
+            "field": "[concat('tags[', parameters('tagNameOwner'), ']')]",
+            "exists": "false"
+          },
+          {
+            "value": "[parameters('tagNameOwnerValue')]",
+            "notEquals": ""
+          },
+          {
+            "field": "[concat('tags[', parameters('tagNameEnvType'), ']')]",
+            "exists": "false"
+          },
+          {
+            "value": "[parameters('tagNameEnvTypeValue')]",
+            "notEquals": ""
+          }
+        ]
+      },
+      "then": {
+        "effect": "modify",
+           "details": {
+            "roleDefinitionIds": [
+                "/providers/microsoft.authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+            ],
+	    	"operations": [
+		{
+                "operation": "add",
+            "field": "[concat('tags[', parameters('tagNameProjectName'), ']')]",
+            "value": "[parameters('tagNameProjectValue')]"
+          },
+          {
+		     "operation": "add",
+            "field": "[concat('tags[', parameters('tagNameOwner'), ']')]",
+            "value": "[parameters('tagNameOwnerValue')]"
+          },
+          {
+		     "operation": "add",
+            "field": "[concat('tags[', parameters('tagNameEnvType'), ']')]",
+            "value": "[parameters('tagNameEnvTypeValue')]"
+          }
+        ]
+      }
+    }
+    }
+}
