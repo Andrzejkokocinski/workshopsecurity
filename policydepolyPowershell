@@ -1,0 +1,9 @@
+# Create the Policy Definition 
+$policyrules = "https://github.com/Andrzejkokocinski/workshopsecurity/blob/master/PolicyTags.json"
+$definition = New-AzPolicyDefinition -Name 'PolicyTags' -Policy $policyrules  -Mode Indexed
+ 
+# Set the scope to a resource group; may also be a resource, subscription, or management group
+$scope = Get-AzResourceGroup -Name 'MyRG'
+ 
+# Create the Policy Assignment
+New-AzPolicyAssignment -Name 'PolicyTags' -DisplayName 'Apply tags and  values' -Scope $scope.ResourceId -PolicyDefinition $definition
