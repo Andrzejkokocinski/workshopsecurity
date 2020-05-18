@@ -54,11 +54,15 @@
       "if": {
         "allOf": [
           {
+            "field": "type",
+            "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+          },
+		  {
             "field": "[concat('tags[', parameters('tagNameProjectName'), ']')]",
             "exists": "false"
           },
           {
-            "value": "[resourceGroup().tags[parameters('tagNameProjectValue')]]",
+            "value": "[parameters('tagNameProjectValue')]",
             "notEquals": ""
           },
           {
@@ -66,7 +70,7 @@
             "exists": "false"
           },
           {
-            "value": "[resourceGroup().tags[parameters('tagNameOwnerValue')]]",
+            "value": "[parameters('tagNameOwnerValue')]",
             "notEquals": ""
           },
           {
@@ -74,7 +78,7 @@
             "exists": "false"
           },
           {
-            "value": "[resourceGroup().tags[parameters('tagNameEnvTypeValue')]]",
+            "value": "[parameters('tagNameEnvTypeValue')]",
             "notEquals": ""
           }
         ]
@@ -84,15 +88,15 @@
         "details": [
           {
             "field": "[concat('tags[', parameters('tagNameProjectName'), ']')]",
-            "value": "[resourceGroup().tags[parameters('tagNameProjectValue')]]"
+            "value": "[parameters('tagNameProjectValue')]"
           },
           {
             "field": "[concat('tags[', parameters('tagNameOwner'), ']')]",
-            "value": "[resourceGroup().tags[parameters('tagNameOwnerValue')]]"
+            "value": "[parameters('tagNameOwnerValue')]"
           },
           {
             "field": "[concat('tags[', parameters('tagNameEnvType'), ']')]",
-            "value": "[resourceGroup().tags[parameters('tagNameEnvTypeValue')]]"
+            "value": "[parameters('tagNameEnvTypeValue')]"
           }
         ]
       }
