@@ -1,0 +1,70 @@
+"parameters": {
+      "tagNameProjectName": {
+        "type": "String",
+        "metadata": {
+          "displayName": "ProjectName",
+          "description": "ProjectName"
+        }
+      },
+      "tagNameOwner": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Owner",
+          "description": "Owner"
+        }
+      },
+      "tagNameEnvType": {
+        "type": "String",
+        "metadata": {
+          "displayName": "EnvType",
+          "description": "EnvType"
+        }
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "[concat('tags[', parameters('tagNameProjectName'), ']')]",
+            "exists": "false"
+          },
+          {
+            "value": "[resourceGroup().tags[parameters('tagNameProjectName')]]",
+            "notEquals": ""
+          },
+          {
+            "field": "[concat('tags[', parameters('tagNameOwner'), ']')]",
+            "exists": "false"
+          },
+          {
+            "value": "[resourceGroup().tags[parameters('tagNameOwner')]]",
+            "notEquals": ""
+          },
+          {
+            "field": "[concat('tags[', parameters('tagNameEnvType'), ']')]",
+            "exists": "false"
+          },
+          {
+            "value": "[resourceGroup().tags[parameters('tagNameEnvType')]]",
+            "notEquals": ""
+          }
+        ]
+      },
+      "then": {
+        "effect": "append",
+        "details": [
+          {
+            "field": "[concat('tags[', parameters('tagNameProjectName'), ']')]",
+            "value": "[resourceGroup().tags[parameters('tagNameProjectName')]]"
+          },
+          {
+            "field": "[concat('tags[', parameters('tagNameOwner'), ']')]",
+            "value": "[resourceGroup().tags[parameters('tagNameOwner')]]"
+          },
+          {
+            "field": "[concat('tags[', parameters('tagNameEnvType'), ']')]",
+            "value": "[resourceGroup().tags[parameters('tagNameEnvType')]]"
+          }
+        ]
+      }
+    }
