@@ -1,5 +1,5 @@
 {
-"mode": "Indexed",
+
 "parameters": {
       "tagNameProjectName": {
         "type": "String",
@@ -61,27 +61,15 @@
             "field": "[concat('tags[', parameters('tagNameProjectName'), ']')]",
             "exists": "false"
           },
-          {
-            "value": "[parameters('tagNameProjectValue')]",
-            "notEquals": ""
-          },
-          {
+                    {
             "field": "[concat('tags[', parameters('tagNameOwner'), ']')]",
             "exists": "false"
           },
-          {
-            "value": "[parameters('tagNameOwnerValue')]",
-            "notEquals": ""
-          },
-          {
+                    {
             "field": "[concat('tags[', parameters('tagNameEnvType'), ']')]",
             "exists": "false"
           },
-          {
-            "value": "[parameters('tagNameEnvTypeValue')]",
-            "notEquals": ""
-          }
-        ]
+                ]
       },
       "then": {
         "effect": "modify",
