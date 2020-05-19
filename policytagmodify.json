@@ -67,8 +67,8 @@
                     {
             "field": "[concat('tags[', parameters('tagNameEnvType'), ']')]",
             "exists": "false"
-          },
-                ]
+          }
+          ]
       },
       "then": {
         "effect": "modify",
