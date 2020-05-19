@@ -6,4 +6,8 @@ $definition = New-AzPolicyDefinition -Name 'PolicyTags2' -Policy $policyrules -M
 $scope = Get-AzResourceGroup -Name 'RG01'
  
 # Create the Policy Assignment
-New-AzPolicyAssignment -Name 'PolicyTags' -DisplayName 'Apply tags and  values' -Scope $scope.ResourceId -PolicyDefinition $definition
+$policyAssignment=New-AzPolicyAssignment -Name 'PolicyTags' -DisplayName 'Apply tags and  values' -Scope $scope.ResourceId -PolicyDefinition $definition -AssignIdentity -Location $scope.Location
+
+# Create a remediation for a specific assignment
+
+Start-AzPolicyRemediation -Name 'myRemedation' -PolicyAssignmentId $policyAssignment.PolicyAssignmentId
