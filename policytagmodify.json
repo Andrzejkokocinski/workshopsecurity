@@ -1,5 +1,4 @@
 {
-
 "parameters": {
       "tagNameProjectName": {
         "type": "String",
@@ -96,5 +95,5 @@
         ]
       }
     }
-    }
+   }
 }
