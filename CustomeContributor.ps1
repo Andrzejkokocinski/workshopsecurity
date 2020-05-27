@@ -129,6 +129,6 @@ $role.NotActions.Add("Microsoft.Network/networkInterfaces/UpdateParentNicAttachm
 $role.NotActions.Add("Microsoft.Network/networkInterfaces/tapConfigurations/write")
 $role.NotActions.Add("Microsoft.Network/networkInterfaces/tapConfigurations/delete")
 $role.AssignableScopes.Clear()
-$role.AssignableScopes.Add("/subscriptions/e1e09677-0272-4576-93c4-8cee7b76aad0")
+$role.AssignableScopes.Add("/subscriptions/yorSubscriptionid")
 #$role.AssignableScopes.Add("/subscriptions/11111111-1111-1111-1111-111111111111")
 New-AzureRmRoleDefinition -Role $role
